@@ -56,7 +56,8 @@
                     $.each(arSrcset, function (k, v) {
                         var set = v.match(/\s?(.*)\s(\d*)w/);
                         if(set) {
-                            if(set[2] >= screenWidth && pre_size <= screenWidth) {
+                            console.log(pre_size, set[2], "<=", screenWidth, (set[2] >= screenWidth));
+                            if(set[2] <= screenWidth) {
                                 currentImage = set[1];
                                 pre_size = set[2];
                             }
@@ -67,7 +68,7 @@
             if(!currentImage) {
                 currentImage = defaultImage;
             }
-            $(element).attr({src:currentImage}).attr({"data-loaded":true});
+            $(element).attr({src:currentImage}).attr({"data-loaded":true}).css({"opacity":"1"});
         }
     };
 }) (jQuery);
